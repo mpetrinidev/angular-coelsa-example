@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { NewItemComponent } from './new-item/new-item.component';
+import { NombreQueQuierasComponent } from './nombre-que-quieras/nombre-que-quieras.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    NewItemComponent
+    NewItemComponent,
+    NombreQueQuierasComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -22,7 +24,8 @@ import { NewItemComponent } from './new-item/new-item.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'create', component: NewItemComponent }
+      { path: 'create', component: NewItemComponent },
+      { path: 'prueba', component: NombreQueQuierasComponent }
     ])
   ],
   providers: [],

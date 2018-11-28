@@ -35,7 +35,34 @@ namespace angular_coelsa_example.Controllers
             _context.ToDo.Add(model);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetBy", new { id = model.Id }, model);
+            return Ok();
+            // return CreatedAtRoute("GetBy", new { id = model.Id }, model);
+        }
+
+        [HttpPatch]
+        public IActionResult PartialUpdate([FromBody] ToDo model)
+        {
+            ToDo item = _context.ToDo.Find(model.Id);
+            if (item == null) return NotFound();
+
+            item.Description = model.Description;
+
+            _context.ToDo.Update(item);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            ToDo item = _context.ToDo.Find(id);
+            if (item == null) return NotFound();
+
+            _context.ToDo.Remove(item);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }
